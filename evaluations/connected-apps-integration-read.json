@@ -1,0 +1,15 @@
+{
+  "name": "Read a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "Which S3 integrations can I use, and what is configured on receipts-test?",
+  "expected_behavior": [
+    "Uses --json for both integration types and integration list, filters the list by the discovered S3 type, then uses get by name."
+  ],
+  "success_criteria": [
+    "Uses --json for both integration types and integration list, filters the list by the discovered S3 type, then uses get by name.",
+    "Reports configured field names and visible metadata without exposing credential values.",
+    "Makes no provider inventory call and distinguishes access denial from empty results."
+  ]
+}

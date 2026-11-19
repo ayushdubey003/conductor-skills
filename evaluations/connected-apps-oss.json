@@ -1,0 +1,14 @@
+{
+  "name": "Connected Apps on OSS",
+  "skills": [
+    "conductor"
+  ],
+  "query": "List my saved Connected Apps and create a workflow to invoke Lambda. On the selected profile, conductor integration types returned the error “Connected Apps are not supported in OSS Conductor. If this profile points to Orkes Conductor, use --server-type Enterprise or set CONDUCTOR_SERVER_TYPE=Enterprise.”.",
+  "success_criteria": [
+    "Reports the CLI error and explains that the selected profile’s server-type setting causes the rejection; it does not claim to have detected the server edition.",
+    "Stops without changing the profile or server type, using another client to retry, or writing a workflow."
+  ],
+  "expected_behavior": [
+    "Treat the CLI rejection as authoritative for the selected profile."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Create a workflow using a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "Help me create a workflow to trigger a Lambda. Use Ohio, wait for the response and accept the ARN and payload as workflow inputs. The selected cluster has one eligible saved Lambda connection, finance-test.",
+  "expected_behavior": [
+    "Discovers the advertised invocation and inspects its saved-connection schema."
+  ],
+  "success_criteria": [
+    "Discovers the advertised invocation and inspects its saved-connection schema.",
+    "The first saved-connection list command uses conductor integration list --type with the discovered Lambda type ID and succeeds without retrying with different flags.",
+    "Uses the sole eligible finance-test connection without asking reuse versus create, and drafts an INTEGRATION invocation with region us-east-2 and runtime inputs.",
+    "Registers and verifies a workflow definition and provides an editor link or relative path, without cloud calls, execution, or trigger activation."
+  ]
+}

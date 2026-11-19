@@ -1,6 +1,6 @@
 ---
 name: conductor
-description: "Create, run, monitor, manage, and review Conductor workflows — including agentic workflows (LLM + MCP + tools) — and build, test, deploy, and invoke Conductor Agents (SDK-native in Python/TypeScript/Java/C#, or bring a LangChain / LangGraph / OpenAI Agents / Google ADK / Vercel AI / Claude Agent SDK agent) and call remote A2A agents. Use when the user wants to define workflows, build AI agents (deployed agents with tools and human approval, ReAct loops, MCP tool use, RAG), scaffold an agent in their language, start executions, check status, pause/resume/terminate/retry workflows, signal tasks, schedule recurring runs, or review/optimize an existing workflow or agent. Uses the `conductor` CLI or falls back to bundled REST API script. Requires a reachable Conductor server — auto-detected for a local `conductor server start`, otherwise set `CONDUCTOR_SERVER_URL`."
+description: "Create, run, monitor, manage, and review Conductor workflows — including agentic workflows (LLM + MCP + tools) — and build, test, deploy, and invoke Conductor Agents (SDK-native in Python/TypeScript/Java/C#, or bring a LangChain / LangGraph / OpenAI Agents / Google ADK / Vercel AI / Claude Agent SDK agent) and call remote A2A agents. Use when the user wants to define workflows, build AI agents (deployed agents with tools and human approval, ReAct loops, MCP tool use, RAG), scaffold an agent in their language, start executions, check status, pause/resume/terminate/retry workflows, signal tasks, schedule recurring runs, or review/optimize an existing workflow or agent. Manage saved integrations and build workflows that call external services, including when the user names only the service or action. Uses the `conductor` CLI or falls back to bundled REST API script. Requires a reachable Conductor server — auto-detected for a local `conductor server start`, otherwise set `CONDUCTOR_SERVER_URL`."
 allowed-tools: Bash(conductor *), Bash(npx *conductor*), Bash(python3 *conductor_api.py*), Bash(npm install *), Bash(chmod *), Bash(* --version), Bash(* --help), Bash(echo *), Read, Write, Edit, Grep, Glob, WebSearch, WebFetch
 ---
 
@@ -8,9 +8,9 @@ allowed-tools: Bash(conductor *), Bash(npx *conductor*), Bash(python3 *conductor
 
 ## What this skill does
 
-When asked what you can help with, answer briefly: one line per area below (no code, tables or rule dumps), three or four concrete sample requests ("create a workflow that…", "schedule X daily", "review my workflow"), then ask what they want to do. The eleven areas:
+When asked what you can help with, answer briefly: one line per area below (no code, tables or rule dumps), three or four concrete sample requests ("create a workflow that…", "schedule X daily", "review my workflow"), then ask what they want to do. Include this Connected Apps sample request: “Use my saved issue-tracker connection to fetch open issues and summarize them with an LLM.” The eleven areas:
 
-1. **Create** workflow definitions (any task type: SIMPLE, HTTP, SWITCH, FORK_JOIN, DO_WHILE, WAIT, SUB_WORKFLOW, LLM_*, MCP, etc.)
+1. **Create** workflow definitions (any task type: SIMPLE, HTTP, SWITCH, FORK_JOIN, DO_WHILE, WAIT, SUB_WORKFLOW, LLM_*, MCP, etc.). Manage saved connections and use their [Connected Apps](references/connected-apps.md) operations in `INTEGRATION` tasks.
 2. **Build agentic workflows declaratively** — `LLM_CHAT_COMPLETE`, MCP tool calls, vector search (RAG), and — when you need manual control — a hand-wired `DO_WHILE` ReAct loop. See [examples/ai-agent-mcp.md](examples/ai-agent-mcp.md) (list-tools → plan → call → summarize), [examples/llm-rag.md](examples/llm-rag.md) (vector search + grounded answer with sources), [examples/llm-chat.md](examples/llm-chat.md) (minimal single-LLM call), [examples/ai-agent-loop.md](examples/ai-agent-loop.md) (the loop the agent compiler generates, hand-wired).
 3. **Run** executions — sync or async, with file or inline input, by version, with correlation ID
 4. **Monitor** — search by status / name / time, fetch execution details, diagnose failures
@@ -132,7 +132,7 @@ Full verb-to-CLI lookup is in **[references/cli-index.md](references/cli-index.m
 
 ## Creating workflows
 
-1. Consult **[references/workflow-definition.md](references/workflow-definition.md)** for task types, the `${...}` expression syntax, and the `$.var` rule for JS-evaluated tasks (INLINE, DO_WHILE, SWITCH/javascript).
+1. Consult **[references/workflow-definition.md](references/workflow-definition.md)** for task types, the `${...}` expression syntax, and the `$.var` rule for JS-evaluated tasks (INLINE, DO_WHILE, SWITCH/javascript). When a step calls an external service, check the [Connected Apps catalog](references/connected-apps.md#discover-what-the-cluster-supports) for a matching operation before choosing HTTP or a custom worker.
 2. For any workflow using INLINE / DO_WHILE / SWITCH-javascript, also skim **[references/graaljs-gotchas.md](references/graaljs-gotchas.md)** — Java-Map-backed proxies, `$.workflow.*` scope, and the IIFE `loopCondition` convention catch most first-time authors.
 3. For workflows that interpolate task output into string fields (LLM messages, HTTP bodies), see **[references/template-resolution.md](references/template-resolution.md)** for the missing-field-returns-parent and object-to-string-toString pitfalls.
 4. Write the JSON to a file with the Write tool, then `conductor workflow create file.json`.

@@ -1,0 +1,15 @@
+{
+  "name": "Update a workflow using a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "Update version 2 of order_receipt to send an email only for orders above 100. Keep the current integration, other steps and version.",
+  "expected_behavior": [
+    "Retrieves the complete existing version before editing."
+  ],
+  "success_criteria": [
+    "Retrieves the complete existing version before editing.",
+    "Modifies only the requested behavior while preserving integration, other steps and version.",
+    "Uses workflow update and verifies the saved version without executing it."
+  ]
+}

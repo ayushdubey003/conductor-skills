@@ -1,0 +1,15 @@
+{
+  "name": "Delete a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "I want to remove the saved connection mail-old on the staging cluster. What will happen?",
+  "expected_behavior": [
+    "Identifies cluster and named connection, explains known or unchecked workflow impact."
+  ],
+  "success_criteria": [
+    "Identifies cluster and named connection, explains known or unchecked workflow impact.",
+    "Waits for target confirmation before delete; cancellation leaves it intact.",
+    "After confirmation deletes only the saved connection and verifies absence."
+  ]
+}

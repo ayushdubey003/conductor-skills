@@ -1,0 +1,15 @@
+{
+  "name": "Read a workflow using a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "Show me version 2 of invoice_delivery, especially which connection its nested notification step uses.",
+  "expected_behavior": [
+    "Reads the exact workflow name and version."
+  ],
+  "success_criteria": [
+    "Reads the exact workflow name and version.",
+    "Examines nested tasks and reports integration references, methods and bindings only from the observed definition.",
+    "Reads only; never tests the connection by sending a notification."
+  ]
+}

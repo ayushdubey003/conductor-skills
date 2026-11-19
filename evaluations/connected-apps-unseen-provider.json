@@ -1,0 +1,11 @@
+{
+  "name": "Workflow authoring for a provider absent from the skill examples",
+  "skills": ["conductor"],
+  "query": "Create a workflow to get a Grafana dashboard by UID. Take the UID as workflow input. I have one eligible connection, monitoring-test.",
+  "expected_behavior": ["Discover the installed provider and its particular saved operation contract."],
+  "success_criteria": [
+    "Discovers the advertised Grafana operation and queries its exact schema on monitoring-test instead of inventing an API or using HTTP.",
+    "Uses the single eligible connection and binds the dashboard UID from workflow input in an INTEGRATION task.",
+    "Saves and verifies the definition without calling Grafana or executing the workflow."
+  ]
+}

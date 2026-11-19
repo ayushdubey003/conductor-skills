@@ -1,0 +1,15 @@
+{
+  "name": "Update a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "Rotate the key of our existing SES integration receipt-mail. I prepared the configuration patch in the protected file /secure/rotation.json. Keep every other field.",
+  "expected_behavior": [
+    "Uses integration update receipt-mail with the protected patch file or its stdin."
+  ],
+  "success_criteria": [
+    "Uses integration update receipt-mail with the protected patch file or its stdin.",
+    "Avoids exposing file contents, renaming, deleting or recreating the integration.",
+    "Reads back safe metadata and does not claim upstream credentials were tested."
+  ]
+}

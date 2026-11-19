@@ -15,6 +15,7 @@
   "success_criteria": [
     "Agent does not require a slash command to discover capabilities — natural language triggers the skill",
     "At least 8 of the 11 major capability areas (create, run, monitor, manage, signal, schedule, optimize, visualize, workers, AI/LLM workflows, building/deploying agents) are mentioned at least once. Smaller/terser models may consolidate categories (e.g. group manage + signal under 'control') — that's fine as long as the underlying functions are covered.",
+    "The overview mentions Connected Apps, using saved connections for workflow steps, and how their operations can be combined with LLM steps in AI workflows.",
     "Agent-building is listed as a capability: Conductor Agents via the SDK (or bringing a LangChain / LangGraph / OpenAI Agents / Google ADK / Vercel AI / Claude Agent SDK agent), deployed and invoked from workflows via the `AGENT` task",
     "Schedules are correctly described as OSS, not Orkes-only",
     "If secrets are mentioned, `${workflow.secrets.X}` itself is not described as Orkes-only (it works on OSS via `CONDUCTOR_SECRET_*` server env vars); calling the managed store / `conductor secret` CLI and webhooks Orkes-only is correct",

@@ -1,0 +1,15 @@
+{
+  "name": "Delete a workflow using a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "Remove version 2 of order_receipt from the staging cluster. Keep version 1 and its saved connection.",
+  "expected_behavior": [
+    "Identifies exact cluster, name and version and obtains destructive-action confirmation before deleting."
+  ],
+  "success_criteria": [
+    "Identifies exact cluster, name and version and obtains destructive-action confirmation before deleting.",
+    "Uses workflow delete order_receipt 2 only after confirmation.",
+    "Verifies the specified version is absent without deleting other versions, executions or integrations."
+  ]
+}

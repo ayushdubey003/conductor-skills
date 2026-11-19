@@ -1,0 +1,15 @@
+{
+  "name": "Create a saved integration",
+  "skills": [
+    "conductor"
+  ],
+  "query": "Help me set up Lambda on this cluster. I can see one enabled connection, finance-test. What happens if I reuse it, create a new one, or cancel?",
+  "expected_behavior": [
+    "Offers reuse or creation even with a single match, then waits for the choice."
+  ],
+  "success_criteria": [
+    "Offers reuse or creation even with a single match, then waits for the choice.",
+    "For new, reads the live fields and asks for auth mode as needed, using protected secret input.",
+    "Requires explicit confirmation of the final configuration; reuse or cancellation performs zero writes."
+  ]
+}
